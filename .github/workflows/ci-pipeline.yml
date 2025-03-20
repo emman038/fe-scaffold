@@ -1,0 +1,58 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+  workflow_run:
+    workflows: ['CI Pipeline']
+    types:
+      - completed
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Prettier Check
+        run: npm run formatcheck
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Type Checking
+        run: npm run typecheck
+
+      - name: Run Tests with Coverage
+        run: npm test -- --coverage
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Run Security Audit
+        run: npm audit --audit-level=high || true
+
+      - name: Security Scan with Snyk
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: 'https://sonarcloud.io' # Change if using a self-hosted instance

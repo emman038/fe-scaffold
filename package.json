@@ -22,7 +22,8 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "formatcheck": "prettier --check ."
   },
   "eslintConfig": {
     "extends": [
