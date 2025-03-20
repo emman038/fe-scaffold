@@ -40,3 +40,13 @@ npm run format
 
 # Success message
 echo "✅ Project setup complete! You can now start coding 🚀"
+
+# Ask the user if they want to start the app
+read -p "🚀 Do you want to start the app now? (y/n): " start_app
+
+if [[ "$start_app" == "y" || "$start_app" == "Y" ]]; then
+  echo "🟢 Starting the app..."
+  npm run start
+else
+  echo "ℹ️ You can start the app later by running: npm run start"
+fi
