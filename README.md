@@ -1,3 +1,23 @@
+# 🚀 Getting Started with This App
+
+## 📌 Prerequisites
+
+Make sure you have the following installed before running the setup:
+
+- `Node.js`
+- `NVM` (to manage Node versions)
+- `Git`
+
+## 📥 Setup Instructions
+
+To set up this app, run the following commands in your terminal:
+
+```sh
+git clone <repo-url>  # Clone the repository
+cd <project-folder>   # Navigate into the project directory
+./scripts/setup.sh    # Run the setup script - you may need to ensure the script is executable first
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +88,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+
+```
