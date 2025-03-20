@@ -1,1 +1,1 @@
-module.exports = 'mock-svg';
+module.exports = "mock-svg";
