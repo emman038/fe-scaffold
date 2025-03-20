@@ -34,10 +34,10 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      # - name: Upload Coverage to Codecov
-      #   uses: codecov/codecov-action@v3
-      #   with:
-      #     token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       # - name: Run Security Audit
       #   run: npm audit --audit-level=high || true # Prevent pipeline failure due to known issues
