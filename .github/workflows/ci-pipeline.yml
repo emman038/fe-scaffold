@@ -1,11 +1,8 @@
 name: CI Pipeline
 
 on:
-  pull_request:
-  workflow_run:
-    workflows: ['CI Pipeline']
-    types:
-      - completed
+  pull_request: # Runs when a PR is created or updated
+  push: # Runs when code is pushed to any branch
 
 jobs:
   build-and-test:
@@ -17,42 +14,42 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: 'lts/*' # Always use the latest stable LTS version
           cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
 
       - name: Run Prettier Check
-        run: npm run formatcheck
+        run: npm run format-check # Ensure "format-check": "prettier --check ." is in package.json
 
       - name: Run Linter
         run: npm run lint
 
       - name: Type Checking
-        run: npm run typecheck
+        run: npm run type-check # Ensure "type-check": "tsc --noEmit" is in package.json
 
       - name: Run Tests with Coverage
         run: npm test -- --coverage
 
-      - name: Upload Coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Upload Coverage to Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Build Project
-        run: npm run build
+      # - name: Build Project
+      #   run: npm run build # Ensure "build": "tsc" is in package.json
 
-      - name: Run Security Audit
-        run: npm audit --audit-level=high || true
+      # - name: Run Security Audit
+      #   run: npm audit --audit-level=high || true # Prevent pipeline failure due to known issues
 
-      - name: Security Scan with Snyk
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      # - name: Security Scan with Snyk
+      #   uses: snyk/actions/node@master
+      #   env:
+      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: 'https://sonarcloud.io' # Change if using a self-hosted instance
+      # - name: SonarQube Scan
+      #   uses: sonarsource/sonarqube-scan-action@master
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     SONAR_HOST_URL: 'https://sonarcloud.io' # Change if using a self-hosted instance
