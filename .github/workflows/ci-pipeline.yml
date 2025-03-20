@@ -39,10 +39,8 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-          # test
-
-      # - name: Run Security Audit
-      #   run: npm audit --audit-level=high || true # Prevent pipeline failure due to known issues
+      - name: Run Security Audit
+        run: npm audit --audit-level=high || true
 
       # - name: Security Scan with Snyk
       #   uses: snyk/actions/node@master
