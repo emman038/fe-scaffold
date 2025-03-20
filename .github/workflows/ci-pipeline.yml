@@ -1,7 +1,6 @@
 name: CI Pipeline
 
 on:
-  pull_request: # Runs when a PR is created or updated
   push: # Runs when code is pushed to any branch
 
 jobs:
