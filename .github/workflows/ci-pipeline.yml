@@ -36,8 +36,8 @@ jobs:
       #   with:
       #     token: ${{ secrets.CODECOV_TOKEN }}
 
-      # - name: Build Project
-      #   run: npm run build # Ensure "build": "tsc" is in package.json
+      - name: Build Project
+        run: npm run build
 
       # - name: Run Security Audit
       #   run: npm audit --audit-level=high || true # Prevent pipeline failure due to known issues
