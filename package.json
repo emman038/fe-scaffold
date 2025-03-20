@@ -20,7 +20,7 @@
     "prepare": "husky install",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "tsc --noEmit || echo 'TypeScript warnings ignored'",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:fix": "prettier --write ."
   },

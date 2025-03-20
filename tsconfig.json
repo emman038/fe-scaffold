@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@AppUtils": ["src/utils"]
+    },
+    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "typeRoots": ["./node_modules/@types"],
+    "lib": ["dom", "es6"]
+  },
+  "include": ["src"],
+  "exclude": ["tests/**/*.ts"],
+  "ts-node": {
+    "files": true
+  }
+}
