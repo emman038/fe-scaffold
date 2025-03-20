@@ -3,6 +3,6 @@ module.exports = {
     "^.+\\.(js|jsx)$": "babel-jest",
   },
   moduleNameMapper: {
-    "\\.svg$": "<rootDir>/__mocks__/svgMock.js"
-  }
+    "\\.svg$": "<rootDir>/__mocks__/svgMock.js",
+  },
 };
