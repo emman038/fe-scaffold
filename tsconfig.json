@@ -19,15 +19,17 @@
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es6"]
   },
-  "include": ["src", "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+  "include": ["src", "tests", "**/*.ts", "**/*.tsx", "setupTests.js"],
   "exclude": [
-    "tests/**/*.ts",
+    "coverage",
     "node_modules",
     "dist",
     "build",
     ".prettierrc.js",
     "eslint.config.mjs",
     "**/*.config.js",
-    "__mocks__/**/*.js"
+    "**/*.config.mjs",
+    "__mocks__",
+    "jest.config.js"
   ]
 }

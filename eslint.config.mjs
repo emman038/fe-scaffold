@@ -7,21 +7,31 @@ import reactPlugin from 'eslint-plugin-react';
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
-    ignores: ['build/', 'eslint.config.mjs', '.prettierrc.js'],
+    ignores: [
+      'build/',
+      'dist/',
+      'node_modules/',
+      'coverage/', // Ignore coverage reports
+      'eslint.config.mjs',
+      '.prettierrc.js',
+      '__mocks__/',
+      '**/*.config.js',
+      '**/*.config.mjs',
+      'jest.config.js',
+      'setupTests.js', // Ignore this file for linting
+    ],
   },
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: globals.browser,
       parser: tsParser,
       parserOptions: {
-        project: './tsconfig.json',
+        project: ['./tsconfig.json'],
         tsconfigRootDir: import.meta.dirname,
-        ecmaFeatures: {
-          jsx: true,
-        },
+        createDefaultProgram: true, // Helps ESLint handle non-TypeScript files
       },
     },
     plugins: {
@@ -40,16 +50,6 @@ export default [
     },
   },
   js.configs.recommended,
-  {
-    files: ['**/*.config.js', '**/*.config.mjs', '__mocks__/**/*.js'],
-    languageOptions: {
-      sourceType: 'commonjs',
-      globals: globals.node,
-      parserOptions: {
-        project: null,
-      },
-    },
-  },
   {
     files: ['**/*.test.js', '**/*.test.ts', '**/__tests__/**/*.js'],
     languageOptions: {
