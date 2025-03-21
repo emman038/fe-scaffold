@@ -1,6 +1,6 @@
 import { RoutesConfig } from '@AppTypes';
 import { Routes, Route } from 'react-router-dom';
-import AppRoute from 'src/components/appRoute/AppRoute';
+import AppRoute from 'src/components/appRoute';
 
 import PlaceHolderHomePage from './placeHolderHomePage';
 import PlaceHolderNotFound from './placeHolderNotFound';
