@@ -1,9 +1,23 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import App from './App';
-import React from 'react';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders the home page on default route', () => {
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>,
+  );
+
+  expect(screen.getByText(/🏠 Placeholder Homepage/i)).toBeInTheDocument();
+});
+
+test('renders the not found page for unknown routes', () => {
+  render(
+    <MemoryRouter initialEntries={['/random-route']}>
+      <App />
+    </MemoryRouter>,
+  );
+
+  expect(screen.getByText(/not found/i)).toBeInTheDocument();
 });
