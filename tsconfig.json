@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "outDir": "./dist/",
     "module": "commonjs",
     "target": "es6",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -18,9 +19,15 @@
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es6"]
   },
-  "include": ["src"],
-  "exclude": ["tests/**/*.ts"],
-  "ts-node": {
-    "files": true
-  }
+  "include": ["src", "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "tests/**/*.ts",
+    "node_modules",
+    "dist",
+    "build",
+    ".prettierrc.js",
+    "eslint.config.mjs",
+    "**/*.config.js",
+    "__mocks__/**/*.js"
+  ]
 }
