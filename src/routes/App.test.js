@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+
 import App from './App';
 
 test('renders the home page on default route', () => {
@@ -19,5 +20,5 @@ test('renders the not found page for unknown routes', () => {
     </MemoryRouter>,
   );
 
-  expect(screen.getByText(/not found/i)).toBeInTheDocument();
+  expect(screen.getByText(/Page Not Found/i)).toBeInTheDocument();
 });
