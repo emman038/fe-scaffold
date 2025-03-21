@@ -1,8 +1,7 @@
-import './App.css';
-
+import { RoutesConfig } from '@AppTypes';
 import { Routes, Route } from 'react-router-dom';
+import AppRoute from 'src/components/appRoute/AppRoute';
 
-import { RoutesConfig } from './index.config';
 import PlaceHolderHomePage from './placeHolderHomePage';
 import PlaceHolderNotFound from './placeHolderNotFound';
 
@@ -17,7 +16,7 @@ function App() {
   return (
     <Routes>
       {routesConfig().map(({ path, render }) => (
-        <Route key={path} path={path} element={render()} />
+        <Route key={path} path={path} element={<AppRoute render={render} />} />
       ))}
       <Route path="*" element={<PlaceHolderNotFound />} />
     </Routes>

@@ -13,7 +13,8 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@AppUtils": ["src/utils"]
+      "@AppUtils": ["src/utils"],
+      "@AppTypes": ["src/index.config.ts"]
     },
     "types": ["jest", "node", "@testing-library/jest-dom"],
     "typeRoots": ["./node_modules/@types"],
