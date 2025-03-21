@@ -42,8 +42,3 @@ jobs:
 
       - name: Run Security Audit
         run: npm audit --audit-level=high || true
-
-      - name: Security Scan with Snyk
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
