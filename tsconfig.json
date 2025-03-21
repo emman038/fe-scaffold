@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "outDir": "./dist/",
     "module": "commonjs",
     "target": "es6",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -12,15 +13,24 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@AppUtils": ["src/utils"]
+      "@AppUtils": ["src/utils"],
+      "@AppTypes": ["src/index.config.ts"]
     },
     "types": ["jest", "node", "@testing-library/jest-dom"],
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es6"]
   },
-  "include": ["src"],
-  "exclude": ["tests/**/*.ts"],
-  "ts-node": {
-    "files": true
-  }
+  "include": ["src", "tests", "**/*.ts", "**/*.tsx", "setupTests.js"],
+  "exclude": [
+    "coverage",
+    "node_modules",
+    "dist",
+    "build",
+    ".prettierrc.js",
+    "eslint.config.mjs",
+    "**/*.config.js",
+    "**/*.config.mjs",
+    "__mocks__",
+    "jest.config.js"
+  ]
 }
