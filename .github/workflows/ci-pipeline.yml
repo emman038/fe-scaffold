@@ -1,7 +1,10 @@
 name: CI Pipeline
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   build-and-test:
@@ -20,13 +23,13 @@ jobs:
         run: npm install
 
       - name: Run Prettier Check
-        run: npm run formatcheck # Ensure "format-check": "prettier --check ." is in package.json
+        run: npm run formatcheck
 
       - name: Run Linter
         run: npm run lint
 
       - name: Type Checking
-        run: npm run typecheck # Ensure "type-check": "tsc --noEmit" is in package.json
+        run: npm run typecheck
 
       - name: Run Tests with Coverage
         run: npm test -- --coverage

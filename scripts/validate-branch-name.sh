@@ -12,9 +12,15 @@ valid_branch_regex="^(feat|fix|docs|style|refactor|perf|test|chore)\/[0-9a-zA-Z-
 
 message="\n\nThere is something wrong with your branch name.\nBranch names in this project must adhere to this contract:\n${bold}${YLW}$valid_branch_regex ${normal}${NC} \n\n${RED}Your commit will be rejected.${NC} \nYou should rename your branch to a valid name and try again.\n\n"
 
-# delete to prevent pushes to main etc.
+# delete to prevent pushes to main, develop and master
+# if [[ "$local_branch" == "main" || "$local_branch" == "develop" || "$local_branch" == "master" ]]; then
+#   exit 0
+# fi
+
+# Keep in to prevent push to main, develop and master
 if [[ "$local_branch" == "main" || "$local_branch" == "develop" || "$local_branch" == "master" ]]; then
-  exit 0
+ echo "🚫 Pushing to this branch is not allowed. Use a pull request instead."
+ exit 1
 fi
 
 if [[ ! $local_branch =~ $valid_branch_regex ]]
