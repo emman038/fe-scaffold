@@ -1,0 +1,44 @@
+name: CI Pipeline
+
+on:
+  push:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Prettier Check
+        run: npm run formatcheck # Ensure "format-check": "prettier --check ." is in package.json
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Type Checking
+        run: npm run typecheck # Ensure "type-check": "tsc --noEmit" is in package.json
+
+      - name: Run Tests with Coverage
+        run: npm test -- --coverage
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: emman038/fe-scaffold
+
+      - name: Run Security Audit
+        run: npm audit --audit-level=high || true
