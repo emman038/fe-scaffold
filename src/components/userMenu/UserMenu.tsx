@@ -1,3 +1,5 @@
+import { useState, MouseEvent } from 'react';
+
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import { grey } from '@mui/material/colors';
@@ -6,9 +8,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import { useState, MouseEvent } from 'react';
-
-const menuOptions = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import { menuOptions } from 'src/constants';
 
 const UserMenu = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
