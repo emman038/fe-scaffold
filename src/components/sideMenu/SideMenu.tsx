@@ -1,15 +1,23 @@
+import { MouseEvent, useState } from 'react';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { MouseEvent, useState } from 'react';
-
-const pages = ['Products', 'Pricing', 'Blog'];
+import { useNavigate } from 'react-router-dom';
+import { defaultTab, pageKeysList } from 'src/constants';
+import { useActiveTab } from 'src/hooks';
+import { PageTypeKeys } from 'src/index.config';
+import paths from 'src/routes/paths';
+import { formatPageName } from 'src/utils';
 
 const SideMenu = () => {
+  const { setActiveTab } = useActiveTab();
+
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -17,6 +25,12 @@ const SideMenu = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleMenuItemClick = (pageKey: PageTypeKeys) => {
+    handleCloseNavMenu();
+    setActiveTab(defaultTab);
+    navigate(`${paths[pageKey]}`);
   };
 
   return (
@@ -47,9 +61,11 @@ const SideMenu = () => {
         onClose={handleCloseNavMenu}
         sx={{ display: 'block' }}
       >
-        {pages.map((page) => (
-          <MenuItem key={page} onClick={handleCloseNavMenu}>
-            <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+        {pageKeysList.map((pageKey) => (
+          <MenuItem key={pageKey} onClick={() => handleMenuItemClick(pageKey)}>
+            <Typography sx={{ textAlign: 'center' }}>
+              {formatPageName(pageKey)}
+            </Typography>
           </MenuItem>
         ))}
       </Menu>

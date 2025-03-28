@@ -1,4 +1,4 @@
-import { AppRouteConfig } from '@AppTypes';
+import { AppRouteConfig } from 'src/index.config';
 
 import ActiveTabProvider from '../activeTabProvider';
 import NavBar from '../navBar';

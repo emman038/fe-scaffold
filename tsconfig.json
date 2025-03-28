@@ -13,7 +13,6 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@AppTypes": ["src/index.config.ts"],
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
     },
     "types": ["jest", "node", "@testing-library/jest-dom"],

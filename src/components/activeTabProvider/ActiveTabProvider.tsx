@@ -1,13 +1,14 @@
-import { ActiveTabConfig } from '@AppTypes';
 import { createContext, ReactNode, useState } from 'react';
-import { tabOptions } from 'src/constants';
+
+import { defaultTab } from 'src/constants';
+import { ActiveTabConfig } from 'src/index.config';
 
 export const ActiveTabContext = createContext<ActiveTabConfig | undefined>(
   undefined,
 );
 
 const ActiveTabProvider = ({ children }: { children: ReactNode }) => {
-  const [activeTab, setActiveTab] = useState<string>(tabOptions[0]);
+  const [activeTab, setActiveTab] = useState<string>(defaultTab);
 
   return (
     <ActiveTabContext.Provider value={{ activeTab, setActiveTab }}>
