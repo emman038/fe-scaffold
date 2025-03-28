@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 
 import NavigationTabs from '../navigationTabs';
-import SideMenu from '../side menu';
+import SideMenu from '../sideMenu';
 import UserMenu from '../userMenu';
 
 function NavBar() {

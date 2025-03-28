@@ -13,4 +13,5 @@ module.exports = {
   },
   setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  coveragePathIgnorePatterns: ['/node_modules/', 'index.ts$'],
 };

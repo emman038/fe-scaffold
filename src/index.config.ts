@@ -1,6 +1,12 @@
 import { ReactElement } from 'react';
 import React from 'react';
 
+export const pageType = {
+  HOME_PAGE: 'HOME_PAGE',
+} as const;
+
+export type PageTypeKeys = keyof typeof pageType;
+
 export type RoutesConfig = AppRouteConfig & {
   path: string;
 };
